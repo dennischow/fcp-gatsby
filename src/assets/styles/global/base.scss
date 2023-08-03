@@ -1,0 +1,71 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=auto");
+
+@font-face {
+    font-family: "Thinking Of Betty Regular";
+    src: url("../fonts/thinking_of_betty-webfont.woff2") format("woff2"),
+        url("../fonts/thinking_of_betty-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: var(--c-orange);
+    color: var(--c-white);
+    text-shadow: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: var(--c-base-color);
+    font-size: var(--text-size-body);
+    overflow-y: scroll;
+}
+
+a, button {
+    border: none;
+    // outline: 0;
+    cursor: pointer;
+}
+
+a {
+    color: var(--c-blue);
+
+    &:not([href]):not([class]) {
+        color: var(--c-blue);
+        text-decoration: underline;
+
+        &:hover {
+            color: var(--c-dark-blue);
+        }
+
+    }
+
+}
+
+button {
+    &[disabled] {
+        cursor: not-allowed;
+        opacity: 0.4;
+    }
+}
+
+img, svg, iframe {
+    max-width: 100%;
+}
+
+iframe {
+    width: 100%;
+}
+
+#root {
+    display: block;
+}

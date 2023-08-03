@@ -9,7 +9,8 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 
-import "./app-layout.styles.scss";
+import "../../../assets/styles/index.scss";
+
 import AppHeader from "../app-header/app-header.component";
 import AppFooter from "../app-footer/app-footer.component";
 
