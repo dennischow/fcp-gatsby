@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import AppLayout from "../components/shared/app-layout/app-layout.component";
 import Seo from "../components/seo";
 
-const SecondPage = () => (
+const PageSecond = () => (
     <AppLayout>
         <Seo title="Page two" />
         <h1>Hi from the second page</h1>
@@ -13,4 +13,4 @@ const SecondPage = () => (
     </AppLayout>
 );
 
-export default SecondPage;
+export default PageSecond;

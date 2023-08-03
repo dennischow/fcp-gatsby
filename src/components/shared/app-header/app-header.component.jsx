@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 const AppHeader = ({ siteTitle }) => (
-    <header
+    <header className="app-header"
         style={{
             background: `rebeccapurple`,
             marginBottom: `1.45rem`,
