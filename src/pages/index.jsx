@@ -1,31 +1,31 @@
 import * as React from "react";
-import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
-import "./index.scss";
-import AppLayout from "../components/shared/app-layout/app-layout.component";
+import AppLayout from "../components/shared/app-layout/app-layout";
+import AppFeatureBanner from "../components/shared/app-feature-banner/app-feature-banner";
 import Seo from "../components/seo";
+import heroBackgroundImg from "../assets/images/home/polygon-colored-crossed-dark-extend-bg.jpg";
+
 
 const PageIndex = () => (
     <AppLayout>
         <Seo title="Homepage" />
         <div className="app-page page-homepage">
-            <h1>Hi people</h1>
-            <p>Welcome to your new Gatsby site.</p>
-            <p>Now go build something great.</p>
+            <AppFeatureBanner
+                type="hero"
+                heroBackgroundUrl={heroBackgroundImg}
+                heading="<span>Just a</span> <span>Front-End</span> <span>Web Developer</span>"
+                subHeading="Who cares about things that users see and interact with"
+            />
+            <h1>Homepage</h1>
             <StaticImage
-                src="../assets/images/gatsby-astronaut.png"
+                src="../assets/images/home/polygon-colored-crossed-dark-extend-bg.jpg"
                 width={300}
                 quality={95}
                 formats={["auto", "webp", "avif"]}
                 alt="A Gatsby astronaut"
                 style={{ marginBottom: `1.45rem` }}
             />
-            <p>
-                <Link to="/about/">Go to About page</Link> <br />
-                <Link to="/page-2/">Go to page 2</Link> <br />
-                <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-            </p>
         </div>
     </AppLayout>
 );

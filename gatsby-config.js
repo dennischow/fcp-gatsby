@@ -7,15 +7,23 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sass`,
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/images`,
+        path: `${__dirname}/src/`,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-react-svg`,
+    //   options: {
+    //     rule: {
+    //       include: `${__dirname}/src/`
+    //     }
+    //   }
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -29,7 +37,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `${__dirname}/src/assets/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `${__dirname}/src/assets/images/common/brand-logo.svg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
