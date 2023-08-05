@@ -9,21 +9,21 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-image`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-react-svg`,
-    //   options: {
-    //     rule: {
-    //       include: `${__dirname}/src/`
-    //     }
-    //   }
-    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
