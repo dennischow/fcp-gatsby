@@ -14,7 +14,7 @@ const fs = require("fs-extra");
 const path = require("path");
 
 // Function to fetch API data and generate JSON file
-async function fetchApiAndGenerateJsonData() {
+async function fetchApiAndGenerateJsonFiles() {
     try {
         // Fetch data from multiple APIs concurrently
         const [projects, articles, testimonials] = await Promise.all([
@@ -40,7 +40,56 @@ async function fetchApiAndGenerateJsonData() {
 
 exports.onPreInit = async () => {
     // Fetch API data and generate JSON file before building pages
-    await fetchApiAndGenerateJsonData();
+    await fetchApiAndGenerateJsonFiles();
+};
+
+exports.createPages = async ({ graphql, actions }) => {
+    const { createPage } = actions;
+
+    // Generate project details pages
+    try {
+        const projectsResult = await graphql(`
+            query ProjectsQuery {
+                allProjectsJson {
+                    edges {
+                        node {
+                            author_id
+                            channel_id
+                            description
+                            edit_date
+                            entry_date
+                            entry_id
+                            full_image {
+                                image
+                                row_id
+                            }
+                            language_software
+                            project_name
+                            status
+                            thumbnail
+                            title
+                            url_title
+                            visit_url
+                            project_date
+                        }
+                    }
+                }
+            }
+        `);
+
+        // Iterate through the GraphQL data layer and perform page creation
+        projectsResult.data.allProjectsJson.edges.forEach(({node: currentPost}) => {
+            createPage({
+                path: `/projects/details/${currentPost.url_title}`,
+                component: path.resolve(`./src/templates/projects-details.jsx`), // Path to your template component
+                context: {
+                    currentPost, // Pass data to the template component
+                },
+            });
+        });
+    } catch (error) {
+        console.error("Error fetching external API data:", error);
+    }
 };
 
 // exports.createPages = async ({ actions }) => {

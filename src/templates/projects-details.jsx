@@ -8,8 +8,7 @@ import AppFeatureBanner from "../components/shared/app-feature-banner/app-featur
 import Seo from "../components/seo";
 
 const ProjectsDetails = ({ pageContext }) => {
-    const { post } = pageContext;
-    const currentPost = post;
+    const { currentPost } = pageContext;
 
     return (
         <AppLayout>
