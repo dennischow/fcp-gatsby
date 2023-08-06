@@ -1,10 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link, graphql, useStaticQuery } from "gatsby";
+import { FaArrowRight } from "react-icons/fa";
 
+import * as CONSTANTS from "../../../common/constants";
+import * as UTILS from "../../../common/utils";
 import AppLayout from "../../../components/shared/app-layout/app-layout";
 import AppFeatureBanner from "../../../components/shared/app-feature-banner/app-feature-banner";
 import Seo from "../../../components/seo";
 
 const PageProjectsOverview = () => {
+    const staticData = useStaticQuery(graphql`
+        query {
+            allProjectsJson {
+                edges {
+                    node {
+                        author_id
+                        channel_id
+                        description
+                        edit_date
+                        entry_date
+                        entry_id
+                        full_image {
+                            image
+                            row_id
+                        }
+                        language_software
+                        project_name
+                        status
+                        thumbnail
+                        title
+                        url_title
+                        visit_url
+                        project_date
+                    }
+                }
+            }
+        }
+    `);
+    const projectEntries = staticData.allProjectsJson.edges.map(item => item.node);
+    const [projectsFilteredByCategory, setProjectsFilteredByCategory] = useState(projectEntries);
     const [activeCategoryId, setActiveCategoryId] = useState(4);
     const categoryTabsList = [
         {
@@ -32,15 +66,26 @@ const PageProjectsOverview = () => {
         return classNames.join(" ");
     };
 
+    const categoryToShow = (catId) => {
+        const result = projectEntries.filter((item) => {
+            return item.channel_id === catId;
+        });
+        setProjectsFilteredByCategory(result);
+    };
+
     const categorySelectHandler = (event, catId) => {
         setActiveCategoryId(catId);
-        // categoryToShow(catId);
+        categoryToShow(catId);
         console.log(event.target, catId);
     };
 
+    useEffect(() => {
+        categoryToShow(activeCategoryId);
+    }, []);
+
     return (
         <AppLayout>
-            <Seo title="About" />
+            <Seo title={`Projects Overview | ${CONSTANTS.BRAND_NAME}`} />
             <div className="app-page page-projects-overview">
                 <AppFeatureBanner
                     type="default"
@@ -65,7 +110,57 @@ const PageProjectsOverview = () => {
                     </div>
                 </div>
 
-                <h1>Projects Overview</h1>
+                <div className="projects-intro">
+                    <div className="projects-intro__container">
+                        {projectsFilteredByCategory.length > 0 && projectsFilteredByCategory.slice(0, 1).map((item, index) => {
+                            const id = item.channel_id;
+                            const catObj = categoryTabsList.find((item, index) => item.id === id);
+                            return (
+                                <p className="projects-intro__content" key={item.entry_id}>
+                                    <span className="projects-intro__category-name">{UTILS.convertProjectCatIdToName(catObj.id)}</span>
+                                    <span className="projects-intro__definition">{catObj.definition}</span>
+                                </p>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <div className="projects-block">
+                    <div className="projects-block__container">
+                        <ul className="projects-block__list">
+                            {projectsFilteredByCategory.length > 0 && projectsFilteredByCategory.map((item, index) => (
+                                <li className="projects-block__list-item" key={index}>
+                                    <Link className="projects-block__content" to={`${CONSTANTS.ROUTES.projectsDetails.path}/${item.url_title}`}>
+                                        <p className="projects-block__title">
+                                            <span className="projects-block__title-text">
+                                                {item.title}
+                                            </span>
+                                        </p>
+                                        <div
+                                            className="projects-block__visual"
+                                            role="img"
+                                            aria-label={item.title}
+                                            style={{ backgroundImage: `url(${item.thumbnail})` }}>
+                                            <img
+                                                className="projects-block__img"
+                                                src={item.thumbnail}
+                                                height="300"
+                                                width="300"
+                                                alt={`Thumbnail of ${item.title}`}
+                                            />
+                                        </div>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="projects-block__buttons-container">
+                            <Link className="app-cta app-cta--orange" to={CONSTANTS.ROUTES.about.path}>
+                                Learn more about me <FaArrowRight />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </div>
         </AppLayout>
     );
