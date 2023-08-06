@@ -1,15 +1,37 @@
-import React, { useEffect, useState} from "react";
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 
 const AppStatistics = () => {
-    const [projectsCount, setProjectsCount] = useState("");
-    const [articlesCount, setArticlesCount] = useState("");
-    const [testimonialsCount, setTestimonialsCount] = useState("");
+    const staticData = useStaticQuery(graphql`
+        query {
+            allProjectsJson {
+                edges {
+                    node {
+                        id
+                    }
+                }
+            }
+            allArticlesJson {
+                edges {
+                    node {
+                        id
+                    }
+                }
+            }
+            allTestimonialsJson {
+                edges {
+                    node {
+                        id
+                    }
+                }
+            }
+        }
+    `);
 
-    useEffect(() => {
-        setProjectsCount("---");
-        setArticlesCount("---");
-        setTestimonialsCount("---");
-    }, []);
+    const { allProjectsJson, allArticlesJson, allTestimonialsJson } = staticData;
+    const projectsCount = allProjectsJson.edges.length;
+    const articlesCount = allArticlesJson.edges.length;
+    const testimonialsCount = allTestimonialsJson.edges.length;
 
     return (
         <div className="app-statistics">

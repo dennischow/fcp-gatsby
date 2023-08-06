@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
     // Generate project details pages
     try {
         const projectsResult = await graphql(`
-            query ProjectsQuery {
+            query {
                 allProjectsJson {
                     edges {
                         node {
