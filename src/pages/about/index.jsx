@@ -13,12 +13,12 @@ import {
 } from "chart.js";
 import { Line, Bar } from "react-chartjs-2";
 
+import * as CONSTANTS from "../../common/constants";
 import AppLayout from "../../components/shared/app-layout/app-layout";
 import AppFeatureBanner from "../../components/shared/app-feature-banner/app-feature-banner";
-import YoutubePlayer from "../../components/youtube-player/youtube-player";
 import Seo from "../../components/seo";
-import * as CONSTANTS from "../../common/constants";
-
+import TestimonialWidget from "../../components/shared/testimonial-widget/testimonial-widget";
+import YoutubePlayer from "../../components/youtube-player/youtube-player";
 import heroBackgroundImg from "../../assets/images/about/double-colors-exposure.jpg";
 import profilePicture from "../../assets/images/about/photoshoot-at-central-ferry-piers.jpg";
 
@@ -289,6 +289,7 @@ const PageAbout = () => {
 
                 {isYoutubePlayerOn && <YoutubePlayer closeYoutubePlayer={closeYoutubePlayer} />}
 
+                <TestimonialWidget isContentExpandedByDefault={true} entriesLimitByDefault={6} />
             </div>
         </AppLayout>
     );

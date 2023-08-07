@@ -8,6 +8,9 @@
 @import "./app/app-footer";
 @import "./app/app-statistics";
 @import "./app/app-feature-banner";
+@import "./app/app-side-panel";
+@import "./app/app-panel-articles-search";
+@import "./app/app-panel-contact";
 
 @import "./pages/page-home";
 @import "./pages/page-about";
@@ -17,4 +20,5 @@
 @import "./pages/articles-details";
 @import "./pages/page-not-found";
 
+@import "./features//testimonial-widget";
 @import "./features/youtube-player";
