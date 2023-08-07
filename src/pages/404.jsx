@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import AppLayout from "../components/shared/app-layout/app-layout.jsx";
-import Seo from "../components/seo.jsx";
+import AppLayout from "../components/shared/app-layout/app-layout";
+import Seo from "../components/seo/seo";
 import * as CONSTANTS from "../common/constants";
 
 const PageNotFound = () => {

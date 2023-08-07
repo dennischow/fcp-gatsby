@@ -6,8 +6,8 @@ import * as CONSTANTS from "../common/constants";
 import * as UTILS from "../common/utils";
 import AppLayout from "../components/shared/app-layout/app-layout";
 import AppFeatureBanner from "../components/shared/app-feature-banner/app-feature-banner";
-import Seo from "../components/seo";
-import TestimonialWidget from "../components/shared/testimonial-widget/testimonial-widget";
+import Seo from "../components/seo/seo";
+import TestimonialWidget from "../components/testimonial-widget/testimonial-widget";
 import YoutubePlayer from "../components/youtube-player/youtube-player"
 import heroBackgroundImg from "../assets/images/home/polygon-colored-crossed-dark-extend-bg.jpg";
 

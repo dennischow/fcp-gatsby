@@ -6,7 +6,7 @@ import * as CONSTANTS from "../../../common/constants";
 import * as UTILS from "../../../common/utils";
 import AppLayout from "../../../components/shared/app-layout/app-layout";
 import AppFeatureBanner from "../../../components/shared/app-feature-banner/app-feature-banner";
-import Seo from "../../../components/seo";
+import Seo from "../../../components/seo/seo";
 
 const PageArticlesOverview = () => {
 
