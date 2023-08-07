@@ -90,7 +90,56 @@ exports.createPages = async ({ graphql, actions }) => {
     } catch (error) {
         console.error("Error fetching external API data:", error);
     }
+
+    // Generate article details pages
+    try {
+        const articlesResult = await graphql(`
+            query {
+                allArticlesJson {
+                    edges {
+                        node {
+                            blog_body
+                            entry_date
+                            entry_id
+                            related_post
+                            short_text
+                            thumb_image
+                            thumb_image_hotlink
+                            title
+                            url_title
+                        }
+                    }
+                }
+            }
+        `);
+
+        // Iterate through the GraphQL data layer and perform page creation
+        articlesResult.data.allArticlesJson.edges.forEach(({node: currentPost}) => {
+            createPage({
+                path: `/articles/details/${currentPost.url_title}`,
+                component: path.resolve(`./src/templates/articles-details.jsx`), // Path to your template component
+                context: {
+                    articleEntries: articlesResult.data.allArticlesJson.edges.map((item => item.node)),
+                    currentPost, // Pass data to the template component
+                },
+            });
+        });
+    } catch (error) {
+        console.error("Error fetching external API data:", error);
+    }
+
 };
+
+// Modify the webpack configuration
+// to add external dependencies like "canvas" and "jsdom" to the webpack configuration
+// exports.onCreateWebpackConfig = ({ actions }) => {
+//     actions.setWebpackConfig({
+//         externals: {
+//             canvas: "commonjs canvas",
+//             jsdom: "commonjs jsdom",
+//         },
+//     });
+// };
 
 // exports.createPages = async ({ actions }) => {
 //     const { createPage } = actions;
