@@ -70,3 +70,6 @@ yarn-error.log
 
 # local src files
 src/data
+
+# php services
+static/services
