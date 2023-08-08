@@ -1,7 +1,7 @@
 import React from "react";
 
 import useUIStore from "../../../store/ui";
-// import AppPanelContact from "../app-panel-contact/app-panel-contact";
+import AppPanelContact from "../app-panel-contact/app-panel-contact";
 import AppPanelArticlesSearch from "../app-panel-articles-search/app-panel-articles-search";
 
 const AppSidePanel = () => {
@@ -11,7 +11,7 @@ const AppSidePanel = () => {
             {(isPanelContactShow || isPanelSearchShow) && (
                 <div className="app-side-panel">
                     <div className="app-side-panel__inner">
-                        {/* {isPanelContactShow && <AppPanelContact />} */}
+                        {isPanelContactShow && <AppPanelContact />}
                         {isPanelSearchShow && <AppPanelArticlesSearch />}
                     </div>
                     <div className="app-side-panel__overlay"></div>

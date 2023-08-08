@@ -1,19 +1,19 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import qs from "qs";
 import { ThreeDots } from "react-loader-spinner";
 import { FaTelegramPlane, FaExclamationTriangle, FaTimes, FaCheck } from "react-icons/fa";
 
+import useUIStore from "../../../store/ui";
 import api from "../../../services/api";
-// import { appContext } from "../../../contexts/app-context";
-import AppInputField from "../../form/app-input-field/app-input-field.component";
-import AppTextareaField from "../../form/app-textarea-field/app-textarea-field.component";
-import AppSelectField from "../../form/app-select-field/app-select-field.component";
+import AppInputField from "../../form/app-input-field/app-input-field";
+import AppTextareaField from "../../form/app-textarea-field/app-textarea-field";
+import AppSelectField from "../../form/app-select-field/app-select-field";
 
 const AppPanelContact = () => {
 
-    const { setIsPanelContactShow } = useContext(appContext);
+    const { setIsPanelContactShow } = useUIStore();
     const [loaderFeedback, setLoaderFeedback] = useState({ indicator: false, message: "", result: null });
 
     const contactFormObj = useFormik({
@@ -171,7 +171,7 @@ const AppPanelContact = () => {
     ];
 
     return (
-        <Fragment>
+        <>
             <div className="app-panel-contact">
 
                 {contactFormObj.isSubmitting && (
@@ -265,7 +265,7 @@ const AppPanelContact = () => {
                     </fieldset>
                 </form>
             </div>
-        </Fragment>
+        </>
     );
 };
 
