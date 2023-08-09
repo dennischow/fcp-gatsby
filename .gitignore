@@ -73,3 +73,6 @@ src/data
 
 # php services
 static/services
+
+# deployment file
+deploy.js

@@ -10,6 +10,7 @@ module.exports = {
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-image`,
     `gatsby-transformer-json`,
+    `gatsby-plugin-remove-console`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
