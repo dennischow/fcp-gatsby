@@ -78,7 +78,7 @@ exports.createPages = async ({ graphql, actions }) => {
         `);
 
         // Iterate through the GraphQL data layer and perform page creation
-        projectsResult.data.allProjectsJson.edges.forEach(({node: currentPost}) => {
+        projectsResult.data.allProjectsJson.edges.forEach(({ node: currentPost }) => {
             createPage({
                 path: `/projects/details/${currentPost.url_title}`,
                 component: path.resolve(`./src/templates/projects-details.jsx`), // Path to your template component
@@ -114,7 +114,7 @@ exports.createPages = async ({ graphql, actions }) => {
         `);
 
         // Iterate through the GraphQL data layer and perform page creation
-        articlesResult.data.allArticlesJson.edges.forEach(({node: currentPost}) => {
+        articlesResult.data.allArticlesJson.edges.forEach(({ node: currentPost }) => {
             createPage({
                 path: `/articles/details/${currentPost.url_title}`,
                 component: path.resolve(`./src/templates/articles-details.jsx`), // Path to your template component
@@ -127,7 +127,6 @@ exports.createPages = async ({ graphql, actions }) => {
     } catch (error) {
         console.error("Error fetching external API data:", error);
     }
-
 };
 
 // Modify the webpack configuration

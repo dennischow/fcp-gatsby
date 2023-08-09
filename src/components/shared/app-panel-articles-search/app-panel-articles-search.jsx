@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import { useLocation } from "@reach/router";
 import { FaTimes } from "react-icons/fa";
@@ -30,7 +30,6 @@ const AppPanelArticlesSearch = () => {
     const { setIsPanelSearchShow } = useUIStore();
     const [articlesFilteredByKeywordSearch, setArticlesFilteredByKeywordSearch] = useState(articleEntries);
     const [searchValue, setSearchValue] = useState("");
-    const [previousPathname, setPreviousPathname] = useState(null);
     const location = useLocation();
 
     const keywordSearch = (event) => {
@@ -45,13 +44,6 @@ const AppPanelArticlesSearch = () => {
         setSearchValue("");
         setIsPanelSearchShow(false);
     };
-
-    useEffect(() => {
-        if (previousPathname && previousPathname !== location.pathname) {
-            setIsPanelSearchShow(false);
-        }
-        setPreviousPathname(location.pathname);
-    }, [location.pathname, previousPathname]);
 
     return (
         <>

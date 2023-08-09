@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "@reach/router";
 
 import useUIStore from "../../../store/ui";
 import AppPanelContact from "../app-panel-contact/app-panel-contact";
 import AppPanelArticlesSearch from "../app-panel-articles-search/app-panel-articles-search";
 
 const AppSidePanel = () => {
-    const { isPanelContactShow, isPanelSearchShow } = useUIStore();
+    const { isPanelContactShow, isPanelSearchShow, setIsPanelSearchShow } = useUIStore();
+    const location = useLocation();
+
+    useEffect(() => {
+        setIsPanelSearchShow(false);
+    }, [location.pathname]);
+
     return (
         <>
             {(isPanelContactShow || isPanelSearchShow) && (
