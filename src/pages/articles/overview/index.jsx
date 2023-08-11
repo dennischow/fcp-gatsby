@@ -41,9 +41,7 @@ const PageArticlesOverview = () => {
 
     useEffect(() => {
         setTotalPageNumber(Math.ceil(articleEntries.length / entriesPerPage));
-        updateArticlesRange();
-        paginationTracking();
-    }, []);
+    }, [articleEntries]);
 
     useEffect(() => {
         updateArticlesRange();
