@@ -1,9 +1,12 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: process.env.REACT_APP_DEFAULT_TITLE,
+    description: process.env.REACT_APP_DEFAULT_DESCRIPTION,
+    author: process.env.REACT_APP_DEFAULT_AUTHOR,
   },
   plugins: [
     `gatsby-plugin-sass`,

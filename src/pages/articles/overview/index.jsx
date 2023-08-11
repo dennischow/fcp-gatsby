@@ -88,7 +88,10 @@ const PageArticlesOverview = () => {
 
     return (
         <AppLayout>
-            <Seo title={`Articles Overview | ${CONSTANTS.BRAND_NAME}`} />
+            <Seo
+                title={`Articles Overview | ${CONSTANTS.BRAND_NAME}`}
+                description="A e-channel to share what's on my mind. Come hang!"
+            />
             <div className="page-articles-overview">
                 <AppFeatureBanner
                     type="default"

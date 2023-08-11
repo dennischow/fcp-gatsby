@@ -64,7 +64,10 @@ const PageHome = () => {
 
     return (
         <AppLayout>
-            <Seo title={`Home | ${CONSTANTS.BRAND_NAME}`} />
+            <Seo
+                title={`Home | ${CONSTANTS.BRAND_NAME}`}
+                description="Fat-Cow Production is an e-channel to showcase Dennis Chow's creativity and passion. It shares my random moments, taste of music, tech news and design inspirations."
+            />
             <div className="app-page page-home">
                 <AppFeatureBanner
                     type="hero"

@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet-async";
 import { useStaticQuery, graphql } from "gatsby";
 
-const Seo = ({ description, lang, meta, title }) => {
+const Seo = ({ title, description, lang, meta }) => {
     const { site } = useStaticQuery(
         graphql`
             query {
@@ -24,8 +24,8 @@ const Seo = ({ description, lang, meta, title }) => {
         `
     );
 
+    // const defaultTitle = site.siteMetadata?.title;
     const metaDescription = description || site.siteMetadata.description;
-    const defaultTitle = site.siteMetadata?.title;
 
     return (
         <Helmet
@@ -33,8 +33,12 @@ const Seo = ({ description, lang, meta, title }) => {
                 lang,
             }}
             title={title}
-            titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+            // titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
             meta={[
+                {
+                    name: `format-detection`,
+                    content: `telephone=no`,
+                },
                 {
                     name: `description`,
                     content: metaDescription,
@@ -79,10 +83,10 @@ Seo.defaultProps = {
 };
 
 Seo.propTypes = {
+    title: PropTypes.string.isRequired,
     description: PropTypes.string,
     lang: PropTypes.string,
     meta: PropTypes.arrayOf(PropTypes.object),
-    title: PropTypes.string.isRequired,
 };
 
 export default Seo;

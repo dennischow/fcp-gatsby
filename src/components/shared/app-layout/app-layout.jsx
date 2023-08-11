@@ -6,7 +6,6 @@
  */
 import React from "react";
 import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
 
 import "../../../assets/styles/index.scss";
 
@@ -16,20 +15,10 @@ import AppStatistics from "../app-statistics/app-statistics";
 import AppSidePanel from "../app-side-panel/app-side-panel";
 
 const AppLayout = ({ children }) => {
-    const data = useStaticQuery(graphql`
-        query SiteTitleQuery {
-            site {
-                siteMetadata {
-                    title
-                }
-            }
-        }
-    `);
-
     return (
         <>
             <div className="app-view">
-                <AppHeader siteTitle={data.site.siteMetadata?.title || `Title`} />
+                <AppHeader />
 
                 <main className="app-main">{children}</main>
 

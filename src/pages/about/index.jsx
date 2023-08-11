@@ -221,7 +221,10 @@ const PageAbout = () => {
 
     return (
         <AppLayout>
-            <Seo title={`About | ${CONSTANTS.AUTHOR} | ${CONSTANTS.BRAND_NAME}`} />
+            <Seo
+                title={`About | ${CONSTANTS.AUTHOR} | Front-End Web Developer`}
+                description="This is me, this is Dennis Chow a.k.a. Fat-Cow. A Toronto based front-end web developer with design background currently living in Hong Kong."
+            />
             <div className="app-page page-about">
                 <AppFeatureBanner
                     type="hero"
