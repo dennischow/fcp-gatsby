@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaInfoCircle, FaMusic, FaYoutube } from "react-icons/fa";
+import React, { useState, useRef, useEffect } from "react";
+import { FaInfoCircle, FaMusic, FaYoutube, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -213,11 +213,47 @@ const PageAbout = () => {
 
     const [isProfileExpanded, setIsProfileExpanded] = useState(false);
     const [isYoutubePlayerOn, setIsYoutubePlayerOn] = useState(false);
+    const [isTopSecretExposed, setIsTopSecretExposed] = useState(false);
+    const keySequenceRef = useRef([]);
 
     const toggleProfile = () => setIsProfileExpanded(!isProfileExpanded);
 
     const openYoutubePlayer = () => setIsYoutubePlayerOn(true);
     const closeYoutubePlayer = () => setIsYoutubePlayerOn(false);
+
+    useEffect(() => {
+        const konamiCode = [
+            "ArrowUp",
+            "ArrowUp",
+            "ArrowDown",
+            "ArrowDown",
+            "ArrowLeft",
+            "ArrowRight",
+            "ArrowLeft",
+            "ArrowRight",
+            "b",
+            "a",
+        ].map((key) => key.toLocaleLowerCase()).join(", ");
+
+        const trackKonamiCodeMatching = (event) => {
+            const { key } = event;
+            keySequenceRef.current = [...keySequenceRef.current, key.toLocaleLowerCase()];
+
+            console.log("keySequenceRef: ", keySequenceRef.current.join(", "));
+
+            if (keySequenceRef.current.join(", ").indexOf(konamiCode) >= 0) {
+                setIsTopSecretExposed(true)
+                keySequenceRef.current = [];
+                console.log("Konami code entered!");
+            }
+        };
+
+        document.addEventListener("keydown", trackKonamiCodeMatching);
+        console.log("Render");
+        return () => {
+            document.removeEventListener("keydown", trackKonamiCodeMatching);
+        };
+    }, []);
 
     return (
         <AppLayout>
@@ -270,7 +306,30 @@ const PageAbout = () => {
                                         <div className="profile-group__line-chart">
                                             <Line options={aWeekOfMyWeek.options} data={aWeekOfMyWeek.data} />
                                         </div>
-                                        {/* <p className="profile-group__text">Anymore info? ↑ ↑ ↓ ↓ ← → ← → B A to unlock the secret if you interested to know more.</p> */}
+                                        <div className="profile-group__top-secret">
+                                            {!isTopSecretExposed ? (
+                                                <p className="profile-group__text">Anymore info? <abbr className="profile-group__konami-code" title="Konami Code">↑ ↑ ↓ ↓ ← → ← → B A</abbr> to unlock the secret if you interested to know more.</p>
+                                            ) : (
+                                                <ul className="profile-group__top-secret-list">
+                                                    <li className="profile-group__top-secret-list-item">
+                                                        <a className="profile-group__top-secret-link" href={CONSTANTS.SOCIAL_URL.linkedIn} target="_blank" rel="noopener noreferrer">
+                                                            <span className="profile-group__top-secret-icon">
+                                                                <FaLinkedinIn />
+                                                            </span>
+                                                            <span className="profile-group__top-secret-text">LinkedIn</span>
+                                                        </a>
+                                                    </li>
+                                                    <li className="profile-group__top-secret-list-item">
+                                                        <a className="profile-group__top-secret-link" href={CONSTANTS.SOCIAL_URL.github} target="_blank" rel="noopener noreferrer">
+                                                            <span className="profile-group__top-secret-icon">
+                                                                <FaGithub />
+                                                            </span>
+                                                            <span className="profile-group__top-secret-text">Github</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            )}
+                                        </div>
                                         <p className="profile-group__text">Front-End Web Developer responsible for a website's user-facing code and the architecture of its immersive user experiences. As an advanced FEWD, I also made visual design decisions on-the-fly for problem-solving, because some problems of which cannot be solved by writing code alone.</p>
                                         <p className="profile-group__text"><strong>IMPORTANT NOTE:</strong> Just wanted to give you a heads up that I've created a YouTube channel called <a href="https://www.youtube.com/channel/UCzAOAymXn2n6cfljyj4IKNA?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Chillax Vibes Corner <FaYoutube /></a>. Where I've compiled some of my favorite tracks into playlists that are perfect for relaxing, focusing, and getting things done. Whether you're studying, coding, or just need some background music, my playlists are sure to keep you chill and motivated. Go ahead and give it a listen!</p>
                                     </div>
