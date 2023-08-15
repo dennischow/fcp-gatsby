@@ -33,10 +33,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: process.env.REACT_APP_DEFAULT_BRAND_NAME,
+        short_name: `Fat-Cow-WEB`,
         start_url: `/`,
-        background_color: `#663399`,
+        background_color: `#f7931d`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
