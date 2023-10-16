@@ -56,8 +56,9 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy:dev": "npm run build && node deploy --NODE_ENV=development",
-    "deploy:prod": "npm run build && node deploy --NODE_ENV=production"
+    "deploy:dev": "npm run build && npm run timeout && node deploy --NODE_ENV=development",
+    "deploy:prod": "npm run build && npm run timeout && node deploy --NODE_ENV=production",
+    "timeout": "node -e \"require('node:timers/promises').setTimeout(5_000)\""
   },
   "repository": {
     "type": "git",
