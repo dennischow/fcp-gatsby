@@ -27,6 +27,7 @@
     position: relative;
     padding: 12px 28px;
     align-items: center;
+    gap: 5px;
     border: 2px solid var(--c-base-color);
     border-radius: 500px;
     background-color: transparent;
@@ -100,7 +101,7 @@
 
     & > svg,
     &__icon {
-        margin-left: 5px;
+
     }
 
     &__bubble {

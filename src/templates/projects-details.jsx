@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import sanitizeHtml from "sanitize-html";
+import { Link } from "gatsby";
+import { FaArrowLeft } from "react-icons/fa";
 
 import * as CONSTANTS from "../common/constants";
 import * as UTILS from "../common/utils";
@@ -63,6 +65,12 @@ const ProjectsDetails = ({ pageContext }) => {
                                 </div>
                             </div>
                         </div>
+
+                        <p className="project-details__buttons-container">
+                            <Link className="app-cta app-cta--orange" to={CONSTANTS.ROUTES.projectsOverview.path}>
+                                <FaArrowLeft /> Back to projects overview
+                            </Link>
+                        </p>
 
                     </div>
                 </div>
