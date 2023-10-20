@@ -262,7 +262,7 @@ const PageAbout = () => {
         };
     }, []);
 
-        const corporateEngagementsList = [
+    const corporateEngagementsList = [
         {
             name: `BMO Financial Group`,
             logoSrc: brandLogoBmoFinancialGroupImg,
