@@ -32,12 +32,12 @@ const AppHeader = () => {
                     style={{ width: `${windowScroll.percentage}%` }}></div>
             </div>
             <div className="app-header__container">
-                <h1 className="app-header__brand">
+                <p className="app-header__brand">
                     <Link className="app-header__brand-link" to={CONSTANTS.ROUTES.home.path}>
                         <img className="app-header__brand-logo" src={BrandLogoImg} alt="logo" />
                         <span className="app-header__brand-name">{CONSTANTS.BRAND_NAME}</span>
                     </Link>
-                </h1>
+                </p>
                 <button className="app-header__nav-toggle" type="button" aria-label="Toggle mobile navigation" onClick={navToggleHandler}>
                     <span className="app-header__nav-toggle-text">Menu</span>
                     <span className="app-header__nav-toggle-icon">{isMainNavShown ? <FaTimes /> : <FaBars />}</span>
