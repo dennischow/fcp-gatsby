@@ -204,7 +204,7 @@ const PageAbout = () => {
             },
         },
         data: {
-            labels: ["Loud Music", "Javascript", "HTML & CSS", "Designing", "ExpressionEngine", "PHP & MySQL"],
+            labels: ["Drumming & Music", "Javascript", "HTML & CSS", "Designing", "ExpressionEngine", "PHP & MySQL"],
             datasets: [
                 {
                     // label: "Music on Headphone",
