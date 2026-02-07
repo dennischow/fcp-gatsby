@@ -58,7 +58,7 @@ const AppSelectField = ({ label, name, options, helperText, autoFocus, ...otherP
 };
 
 AppSelectField.propTypes = {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
     helperText: PropTypes.string,

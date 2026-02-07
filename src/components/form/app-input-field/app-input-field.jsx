@@ -42,7 +42,7 @@ const AppInputField = ({ label, type, name, placeholder, helperText, autoFocus, 
 };
 
 AppInputField.propTypes = {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,

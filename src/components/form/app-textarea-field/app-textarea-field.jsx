@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const AppInputField = ({ label, name, placeholder, rows, maxLength, helperText, autoFocus, ...otherProps }) => {
+const AppTextareaField = ({ label, name, placeholder, rows, maxLength, helperText, autoFocus, ...otherProps }) => {
     const { form } = otherProps;
     const isInvalid = form?.touched[name] && form?.errors[name];
 
@@ -43,7 +43,7 @@ const AppInputField = ({ label, name, placeholder, rows, maxLength, helperText, 
 };
 
 AppTextareaField.propTypes = {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     rows: PropTypes.number,
