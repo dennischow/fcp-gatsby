@@ -8,6 +8,7 @@ module.exports = {
     description: process.env.REACT_APP_DEFAULT_DESCRIPTION,
     author: process.env.REACT_APP_DEFAULT_AUTHOR,
   },
+  trailingSlash: 'always',
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet-async`,
