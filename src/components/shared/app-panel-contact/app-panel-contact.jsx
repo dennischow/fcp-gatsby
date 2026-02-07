@@ -15,6 +15,7 @@ const AppPanelContact = () => {
 
     const { setIsPanelContactShow } = useUIStore();
     const [loaderFeedback, setLoaderFeedback] = useState({ indicator: false, message: "", result: null });
+    const [isLoaderShow, setIsLoaderShow] = useState(false);
 
     const contactFormObj = useFormik({
         initialValues: {
@@ -35,7 +36,9 @@ const AppPanelContact = () => {
             console.log("values: ", values);
             console.log("formikBag: ", formikBag);
             console.log(JSON.stringify(values, null, 2));
-
+            formikBag.setSubmitting(true);
+            
+            setIsLoaderShow(true);
             setLoaderFeedback({
                 indicator: true,
                 message: "Sending out the message...",
@@ -54,6 +57,7 @@ const AppPanelContact = () => {
                         formikBag.resetForm();
                     }
                     formikBag.setSubmitting(false);
+                    setIsLoaderShow(false);
                 }, 3000);
             } catch (error) {
                 setLoaderFeedback({
@@ -63,6 +67,7 @@ const AppPanelContact = () => {
                 });
                 setTimeout(() => {
                     formikBag.setSubmitting(false);
+                    setIsLoaderShow(false);
                 }, 3000);
             }
         },
@@ -174,7 +179,7 @@ const AppPanelContact = () => {
         <>
             <div className="app-panel-contact">
 
-                {contactFormObj.isSubmitting && (
+                {isLoaderShow && (
                     <div className="app-panel-contact__loader">
                         <div className="app-panel-contact__loader-inner">
                             {loaderFeedback.indicator && (
