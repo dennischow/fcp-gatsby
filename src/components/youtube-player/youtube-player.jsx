@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { FaFastBackward, FaFastForward, FaRandom, FaTimes } from "react-icons/fa";
 
 import * as CONSTANTS from "../../common/constants";
@@ -82,6 +83,10 @@ const YoutubePlayer = ({ closeYoutubePlayer }) => {
             </div>
         </div>
     );
+};
+
+YoutubePlayer.propTypes = {
+    closeYoutubePlayer: PropTypes.func.isRequired,
 };
 
 export default YoutubePlayer;

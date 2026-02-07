@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const AppSelectField = ({ label, name, options, helperText, autoFocus, ...otherProps }) => {
     const { form } = otherProps;
@@ -54,6 +55,15 @@ const AppSelectField = ({ label, name, options, helperText, autoFocus, ...otherP
             </div>
         </div>
     );
+};
+
+AppSelectField.propTypes = {
+    label: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    options: PropTypes.arrayOf(PropTypes.object).isRequired,
+    helperText: PropTypes.string,
+    autoFocus: PropTypes.bool,
+    form: PropTypes.object,
 };
 
 export default AppSelectField;

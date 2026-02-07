@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const AppInputField = ({ label, name, placeholder, rows, maxLength, helperText, autoFocus, ...otherProps }) => {
     const { form } = otherProps;
@@ -41,4 +42,15 @@ const AppInputField = ({ label, name, placeholder, rows, maxLength, helperText, 
     );
 };
 
-export default AppInputField;
+AppTextareaField.propTypes = {
+    label: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    rows: PropTypes.number,
+    maxLength: PropTypes.number,
+    helperText: PropTypes.string,
+    autoFocus: PropTypes.bool,
+    form: PropTypes.object,
+};
+
+export default AppTextareaField;

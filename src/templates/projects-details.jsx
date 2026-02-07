@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import sanitizeHtml from "sanitize-html";
 import { Link } from "gatsby";
 import { FaArrowLeft } from "react-icons/fa";
@@ -77,6 +78,10 @@ const ProjectsDetails = ({ pageContext }) => {
             </div>
         </AppLayout>
     );
+};
+
+ProjectsDetails.propTypes = {
+    pageContext: PropTypes.object.isRequired,
 };
 
 export default ProjectsDetails;

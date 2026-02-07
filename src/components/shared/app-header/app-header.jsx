@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { FaBars, FaTimes, FaArrowRight } from "react-icons/fa";
 
@@ -49,14 +48,6 @@ const AppHeader = () => {
             </button>
         </header>
     )
-};
-
-AppHeader.propTypes = {
-    siteTitle: PropTypes.string,
-};
-
-AppHeader.defaultProps = {
-    siteTitle: ``,
 };
 
 export default AppHeader;

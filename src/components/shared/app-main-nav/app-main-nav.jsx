@@ -108,4 +108,8 @@ const AppMainNav = ({ isMainNavShown, ...otherProps }) => {
     );
 };
 
+AppMainNav.propTypes = {
+    isMainNavShown: PropTypes.bool.isRequired,
+};
+
 export default AppMainNav;

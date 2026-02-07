@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { Link } from "gatsby";
 // import sanitizeHtml from "sanitize-html";
 import { FaArrowLeft } from "react-icons/fa";
@@ -95,6 +96,10 @@ const ArticlesDetails = ({ pageContext }) => {
             </div>
         </AppLayout>
     );
+};
+
+ArticlesDetails.propTypes = {
+    pageContext: PropTypes.object.isRequired,
 };
 
 export default ArticlesDetails;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const AppInputField = ({ label, type, name, placeholder, helperText, autoFocus, ...otherProps }) => {
     const { form } = otherProps;
@@ -38,6 +39,16 @@ const AppInputField = ({ label, type, name, placeholder, helperText, autoFocus, 
             </div>
         </div>
     );
+};
+
+AppInputField.propTypes = {
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    helperText: PropTypes.string,
+    autoFocus: PropTypes.bool,
+    form: PropTypes.object,
 };
 
 export default AppInputField;
